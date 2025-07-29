@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Subscription Plans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .plans-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plan-duration {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .savings {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .plan-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features li::before {
+            content: "✓";
+            color: #2ecc71;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .popular {
+            position: relative;
+            border: 2px solid #3498db;
+        }
+        
+        .popular::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .server-specs {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .specs-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .spec-icon {
+            margin-right: 15px;
+            color: #3498db;
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Premium Server Hosting</h1>
+            <p class="subtitle">High-performance servers with 99.9% uptime guarantee</p>
+        </header>
+        
+        <section class="server-specs">
+            <h2 class="specs-title">Server Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-icon">💻</div>
+                    <div>
+                        <h3>CPU</h3>
+                        <p>8-Core Intel Xeon Processor</p>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">🧠</div>
+                    <div>
+                        <h3>RAM</h3>
+                        <p>32GB DDR4 Memory</p>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">💾</div>
+                    <div>
+                        <h3>Storage</h3>
+                        <p>1TB NVMe SSD</p>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">🌐</div>
+                    <div>
+                        <h3>Network</h3>
+                        <p>1Gbps Network Connection</p>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">🛡️</div>
+                    <div>
+                        <h3>Security</h3>
+                        <p>DDoS Protection Included</p>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-icon">⚡</div>
+                    <div>
+                        <h3>Uptime</h3>
+                        <p>99.9% Uptime Guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="plans-container">
+            <div class="plan-card">
+                <div class="plan-duration">1 Month</div>
+                <div class="plan-price">$99<span>/month</span></div>
+                <ul class="plan-features">
+                    <li>Full Root Access</li>
+                    <li>24/7 Technical Support</li>
+                    <li>Free Setup</li>
+                    <li>Unlimited Bandwidth</li>
+                    <li>Daily Backups</li>
+                </ul>
+                <a href="#" class="btn">Purchase Now</a>
+            </div>
+            
+            <div class="plan-card popular">
+                <div class="plan-duration">6 Months</div>
+                <div class="plan-price">$89<span>/month</span></div>
+                <div class="savings">Save $60</div>
+                <ul class="plan-features">
+                    <li>Full Root Access</li>
+                    <li>24/7 Technical Support</li>
+                    <li>Free Setup</li>
+                    <li>Unlimited Bandwidth</li>
+                    <li>Daily Backups</li>
+                    <li>Free Domain Name</li>
+                </ul>
+                <a href="#" class="btn">Purchase Now</a>
+            </div>
+            
+            <div class="plan-card">
+                <div class="plan-duration">1 Year</div>
+                <div class="plan-price">$79<span>/month</span></div>
+                <div class="savings">Save $240</div>
+                <ul class="plan-features">
+                    <li>Full Root Access</li>
+                    <li>24/7 Technical Support</li>
+                    <li>Free Setup</li>
+                    <li>Unlimited Bandwidth</li>
+                    <li>Daily Backups</li>
+                    <li>Free Domain Name</li>
+                    <li>Free SSL Certificate</li>
+                </ul>
+                <a href="#" class="btn">Purchase Now</a>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2023 Premium Server Hosting. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

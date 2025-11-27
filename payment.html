@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Cyber Protection Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
+            background-attachment: fixed;
+            color: #2d3748;
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 500;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .payment-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .payment-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .payment-header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 2px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .required {
+            color: #e53e3e;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #2a5298;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .payment-option {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .payment-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .payment-option-label {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            background: #f7fafc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .payment-option input[type="radio"]:checked + .payment-option-label {
+            border-color: #2a5298;
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(42, 82, 152, 0.05) 100%);
+            box-shadow: 0 4px 15px rgba(42, 82, 152, 0.2);
+        }
+        
+        .payment-option:hover .payment-option-label {
+            border-color: #2a5298;
+            transform: translateY(-2px);
+        }
+        
+        .payment-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 10px;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .payment-name {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+        
+        .btn-container {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+        }
+        
+        .btn {
+            padding: 16px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(42, 82, 152, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(42, 82, 152, 0.5);
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: #e53e3e;
+        }
+        
+        input[type="url"]::placeholder {
+            color: #a0aec0;
+            font-style: italic;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .payment-card {
+                padding: 30px 20px;
+            }
+            
+            .payment-header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Plans</a>
+        
+        <div class="payment-card">
+            <div class="payment-header">
+                <h1>Complete Your Payment</h1>
+                <p>Please provide your company information and select a payment method</p>
+            </div>
+            
+            <form id="paymentForm" action="#" method="POST">
+                <!-- Company Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Company Information</h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="companyName">Company Name <span class="required">*</span></label>
+                            <input type="text" id="companyName" name="companyName" required>
+                            <span class="error-message">Company name is required</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registrationNumber">Registration Number</label>
+                            <input type="text" id="registrationNumber" name="registrationNumber">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactEmail">Contact Email <span class="required">*</span></label>
+                            <input type="email" id="contactEmail" name="contactEmail" required>
+                            <span class="error-message">Valid email is required</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactPhone">Contact Phone <span class="required">*</span></label>
+                            <input type="tel" id="contactPhone" name="contactPhone" required>
+                            <span class="error-message">Phone number is required</span>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="companyAddress">Company Address <span class="required">*</span></label>
+                            <textarea id="companyAddress" name="companyAddress" required></textarea>
+                            <span class="error-message">Company address is required</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="city">City <span class="required">*</span></label>
+                            <input type="text" id="city" name="city" required>
+                            <span class="error-message">City is required</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="state">State/Province</label>
+                            <input type="text" id="state" name="state">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">Country <span class="required">*</span></label>
+                            <input type="text" id="country" name="country" required>
+                            <span class="error-message">Country is required</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="zipCode">ZIP/Postal Code</label>
+                            <input type="text" id="zipCode" name="zipCode">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Person Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Contact Person</h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="contactPersonName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="contactPersonName" name="contactPersonName" required>
+                            <span class="error-message">Contact person name is required</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactPersonEmail">Email <span class="required">*</span></label>
+                            <input type="email" id="contactPersonEmail" name="contactPersonEmail" required>
+                            <span class="error-message">Valid email is required</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactPersonPhone">Phone <span class="required">*</span></label>
+                            <input type="tel" id="contactPersonPhone" name="contactPersonPhone" required>
+                            <span class="error-message">Phone number is required</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title</label>
+                            <input type="text" id="jobTitle" name="jobTitle">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Website Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Website Information</h2>
+                    
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="websiteUrl">Website URL to Protect <span class="required">*</span></label>
+                            <input type="url" id="websiteUrl" name="websiteUrl" placeholder="https://example.com" required>
+                            <span class="error-message">Please enter a valid website URL (e.g., https://example.com)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Method Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Select Payment Method</h2>
+                    
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="paystack" name="paymentMethod" value="paystack" required>
+                            <label for="paystack" class="payment-option-label">
+                                <div class="payment-icon">P</div>
+                                <div class="payment-name">Paystack</div>
+                            </label>
+                        </div>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="stripe" name="paymentMethod" value="stripe" required>
+                            <label for="stripe" class="payment-option-label">
+                                <div class="payment-icon">S</div>
+                                <div class="payment-name">Stripe</div>
+                            </label>
+                        </div>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="flutterwave" name="paymentMethod" value="flutterwave" required>
+                            <label for="flutterwave" class="payment-option-label">
+                                <div class="payment-icon">F</div>
+                                <div class="payment-name">Flutterwave</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit Buttons -->
+                <div class="btn-container">
+                    <a href="index.html" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Form validation
+        const form = document.getElementById('paymentForm');
+        const inputs = form.querySelectorAll('input[required], textarea[required]');
+        
+        // Real-time validation
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+            
+            input.addEventListener('input', function() {
+                if (this.classList.contains('error')) {
+                    validateField(this);
+                }
+            });
+        });
+        
+        function validateField(field) {
+            const formGroup = field.closest('.form-group');
+            const errorMessage = formGroup.querySelector('.error-message');
+            
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                formGroup.classList.add('error');
+                return false;
+            }
+            
+            if (field.type === 'email' && field.value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(field.value)) {
+                    formGroup.classList.add('error');
+                    errorMessage.textContent = 'Please enter a valid email address';
+                    return false;
+                }
+            }
+            
+            if (field.type === 'url' && field.value) {
+                try {
+                    const url = new URL(field.value);
+                    if (!url.protocol.startsWith('http')) {
+                        formGroup.classList.add('error');
+                        errorMessage.textContent = 'URL must start with http:// or https://';
+                        return false;
+                    }
+                } catch (e) {
+                    formGroup.classList.add('error');
+                    errorMessage.textContent = 'Please enter a valid website URL (e.g., https://example.com)';
+                    return false;
+                }
+            }
+            
+            formGroup.classList.remove('error');
+            return true;
+        }
+        
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            inputs.forEach(input => {
+                if (!validateField(input)) {
+                    isValid = false;
+                }
+            });
+            
+            // Check if payment method is selected
+            const paymentMethod = form.querySelector('input[name="paymentMethod"]:checked');
+            if (!paymentMethod) {
+                alert('Please select a payment method');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Get form data
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                console.log('Form Data:', data);
+                
+                // Here you would typically send the data to your backend
+                // and redirect to the selected payment gateway
+                alert('Form submitted successfully! Redirecting to payment gateway...');
+                
+                // Example: Redirect based on payment method
+                // if (data.paymentMethod === 'paystack') {
+                //     window.location.href = 'paystack-payment.html';
+                // } else if (data.paymentMethod === 'stripe') {
+                //     window.location.href = 'stripe-payment.html';
+                // } else if (data.paymentMethod === 'flutterwave') {
+                //     window.location.href = 'flutterwave-payment.html';
+                // }
+            }
+        });
+    </script>
+</body>
+</html>
+
